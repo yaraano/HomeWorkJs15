@@ -36,17 +36,15 @@ btnSearch.addEventListener('click', () => {
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
             .then(res => res.json())
             .then(data => {
-                const cocktail = data.drinks[0];
-                const ingredientsArray = [];
+                const cocktail = data.drinks[0]
+                const ingredientsArray = []
 
                 for (let i = 1; i <= 4; i++) {
-                    const ingredient = cocktail[`strIngredient${i}`];
-                    if (ingredient) {
-                        ingredientsArray.push(ingredient);
-                    }
+                    const ingredient = cocktail[`strIngredient${i}`]
+                        ingredientsArray.push(ingredient)
                 }
 
-                console.log(ingredientsArray);
+                console.log(ingredientsArray)
 
                 box.innerHTML = `
                     <div class="col-6">
@@ -61,13 +59,13 @@ btnSearch.addEventListener('click', () => {
                     </div>
                     <div class="col-6 ingredients">
                         ${ingredientsArray.map(ingredient => `
-                            <div class="col-6"><img src="https://www.thecocktaildb.com/images/ingredients/${ingredient.toLowerCase()}.png" alt=""></div>
+                            <div class="col-6"><img src="https://www.thecocktaildb.com/images/ingredients/${ingredient}.png" alt=""></div>
                         `).join('')}
                     </div>
-                `;
-            });
+                `
+            })
     } else {
-        box.innerHTML = '';
+        box.innerHTML = ''
     }
 });
 
