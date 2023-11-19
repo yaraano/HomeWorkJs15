@@ -37,15 +37,6 @@ btnSearch.addEventListener('click', () => {
             .then(res => res.json())
             .then(data => {
                 const cocktail = data.drinks[0]
-                const ingredientsArray = []
-
-                for (let i = 1; i <= 4; i++) {
-                    const ingredient = cocktail[`strIngredient${i}`]
-                        ingredientsArray.push(ingredient)
-                }
-
-                console.log(ingredientsArray)
-
                 box.innerHTML = `
                     <div class="col-6">
                     <h1>Cocktail information</h1>
@@ -57,10 +48,23 @@ btnSearch.addEventListener('click', () => {
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 ingredients">
-                        ${ingredientsArray.map(ingredient => `
-                            <div class="col-6"><img src="https://www.thecocktaildb.com/images/ingredients/${ingredient}.png" alt=""></div>
-                        `).join('')}
+                    <div class="col-6 ingredients"> 
+                        <div class="col-6">
+                            <img src="https://www.thecocktaildb.com/images/ingredients/${cocktail.strIngredient1}.png" alt="">
+                            <p>${cocktail.strIngredient1}</p>
+                        </div>
+                            <div class="col-6">
+                            <img src="https://www.thecocktaildb.com/images/ingredients/${cocktail.strIngredient2}.png" alt="">
+                            <p>${cocktail.strIngredient2}</p>
+                        </div>                  
+                        <div class="col-6">
+                            <img src="https://www.thecocktaildb.com/images/ingredients/${cocktail.strIngredient3}.png" alt="">
+                            <p>${cocktail.strIngredient3}</p>
+                        </div>                  
+                        <div class="col-6">
+                            <img src="https://www.thecocktaildb.com/images/ingredients/${cocktail.strIngredient4}.png" alt="">
+                            <p>${cocktail.strIngredient4}</p>
+                        </div>
                     </div>
                 `
             })
